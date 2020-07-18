@@ -221,10 +221,10 @@ SELECT * FROM emp_title;
 
 -- Challenge Part 1: Partition the data to show only most recent title per employee
 SELECT emp_no,
- first_name,
- last_name,
- salary,
- title
+first_name,
+last_name,
+salary,
+title
 INTO emp_title_recent
 FROM 
  (SELECT emp_no,
@@ -240,23 +240,83 @@ ORDER BY emp_no;
 
 --Challenge Part 1: Check if new table still has duplicates
 SELECT
-  first_name,
-  last_name,
-  count(*)
+first_name,
+last_name,
+count(*)
 FROM emp_title_recent
 GROUP BY
-  first_name,
-  last_name
+first_name,
+last_name
 HAVING count(*) > 1;
 
 --Challenge Part 1: Count the original number of rows in emp_title(recorded result:65427)
 SELECT
-	count(*)
+count(*)
 FROM
-	emp_title
+emp_title
 
 --Challenge Part 1: Count the original number of rows in emp_title_recent(recorded result:41380)
 SELECT
-	count(*)
+count(*)
 FROM
-	emp_title_recent
+emp_title_recent
+
+--Challenge Part 2: Mentorship Eligibility with duplicates
+SELECT e.emp_no,
+	e.first_name,
+	e.last_name,
+	ti.title,
+	ti.from_date,
+	ti.to_date
+INTO emp_mentors
+FROM employees as e
+INNER JOIN titles as ti
+ON (e.emp_no = ti.emp_no)
+INNER JOIN dept_emp as de
+ON (e.emp_no = de.emp_no)
+WHERE (e.birth_date BETWEEN '1965-01-01' AND '1965-12-31')
+--AND ti.to_date = ('9999-01-01')
+ORDER BY e.emp_no;
+
+
+--Challenge Part 2: Count before removing duplicates(3125)
+SELECT
+count(*)
+FROM
+emp_mentors
+	
+--Challenge Part 2: Mentorship Eligibility - without duplicates
+SELECT e.emp_no,
+	e.first_name,
+	e.last_name,
+	ti.title,
+	ti.from_date,
+	ti.to_date
+INTO emp_mentors_clean
+FROM employees as e
+INNER JOIN titles as ti
+ON (e.emp_no = ti.emp_no)
+WHERE (e.birth_date BETWEEN '1965-01-01' AND '1965-12-31')
+AND ti.to_date = ('9999-01-01')
+ORDER BY e.emp_no;
+
+--Challenge Part 2: Count after duplicates(1549)
+SELECT
+count(*)
+FROM
+emp_mentors_clean
+	
+-- Create summary table showing number of titles retiring
+SELECT 
+COUNT (DISTINCT title) as "Number of Titles Retirees"
+INTO count_emp_title_unique
+FROM emp_title_recent;
+
+-- Create one table showing number of employees with each title or how many
+SELECT
+title as "Title",
+COUNT (title) as "Number of Pending Retirees"
+INTO count_emp_title_unique_summary
+FROM emp_title_recent
+GROUP BY title
+ORDER BY title ASC;
