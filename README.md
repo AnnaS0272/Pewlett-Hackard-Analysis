@@ -66,7 +66,7 @@ count(*)
 FROM
 emp_title_recent
   ```
-I also used this approach to double check there were no duplicates left, and as I ran this quiery the tbale returned was empty, which signified the duplicated were removed.
+I also used this approach to double check there were no duplicates left, and as I ran this quiery the table returned was empty, which signified the duplicated were removed.
 
 ```
 --Challenge Part 1: Check if new table still has duplicates
