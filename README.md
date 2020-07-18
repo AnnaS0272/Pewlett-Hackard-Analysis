@@ -105,7 +105,7 @@ ORDER BY title ASC;
 
 ```
 
-**NOTE: I was confused what the Challenge was asking for at the end, under submission remarks, when I read : "One showing number of [titles] retiring." From the above code I could clearly see there were just 7 titles, I wasn't sure why we needed a separate csv file for 1 row that says "7" but i still egnerated is as "count_emp_title_unique. My other classmates found it confusing too."**
+**NOTE: I was confused what the Challenge was asking for at the end, under submission remarks, when I read : "One showing number of [titles] retiring." From the above code I could clearly see there were just 7 titles, I wasn't sure why we needed a separate csv file for 1 row that states "7" but I still generated it as "count_emp_title_unique.csv". My other classmates found it confusing too."**
 
 I then determined employees who are eligible to participate in a mentorship program. To be eligible to participate in the mentorship program, employees will need to have a date of birth that falls between January 1, 1965 and December 31, 1965.
 
