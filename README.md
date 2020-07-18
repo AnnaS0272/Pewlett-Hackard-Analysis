@@ -66,7 +66,7 @@ count(*)
 FROM
 emp_title_recent
   ```
-I also used this approach to double check there were no duplicates left, and as I ran this quiery the table returned was empty, which signified the duplicated were removed.
+I also used this approach to double check there were no duplicates left, and as I ran this quiery the table returned was empty, which signified the duplicates were removed.
 
 ```
 --Challenge Part 1: Check if new table still has duplicates
@@ -127,7 +127,7 @@ WHERE (e.birth_date BETWEEN '1965-01-01' AND '1965-12-31')
 --AND ti.to_date = ('9999-01-01')
 ORDER BY e.emp_no;
 ```
-Again, I encountered duplicates and I addressed them by using the following code:
+Again, I encountered duplicates, but this time I addressed them by only filtering for curent title ```AND ti.to_date = ('9999-01-01')```, using using the following code:
 
 ```
 --Challenge Part 2: Count before removing duplicates(3125)
