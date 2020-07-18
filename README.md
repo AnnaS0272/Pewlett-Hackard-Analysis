@@ -51,7 +51,7 @@ FROM
  ) tmp WHERE rn = 1
 ORDER BY emp_no;
 ```
-As I got my tables back I wanted to sense check if the total number of line items reduced or not, i.e., were the duplicates filtered out or not. for that, I have used the below code which evidently confirmed my total line items were reduced from 65,427 to 41,380:
+As I got my tables back, I wanted to sense check if the total number of line items reduced or not, i.e., were the duplicates filtered out or not. In order to accomplish that, I have used the below code which evidently confirmed my total line items were reduced from 65,427 to 41,380:
 
 ```
 --Challenge Part 1: Count the original number of rows in emp_title(recorded result:65427)
