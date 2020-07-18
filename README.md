@@ -3,13 +3,13 @@
 
 At Pewlett Hackard like in most companies human capital matters for the ongoing company's success. The problem identified was to understand the amount of employees retiring in the next little while, specifically in which departments, what their titles were and how many were senior levels managers/employees. The latter particularly important to address mentoring program strategy. 
 
-The data was initially only available in separate csv files. First, I built an ERD to understand the relationship between the data, i.e., how is the data connected through primary key (unique values in main table) and foreign keys (unique values in other tables).
+The data was initially only available in separate csv files. First, I built an ERD to understand the relationship between the data, i.e., how is the data connected through primary keys (unique values in the main table) and foreign keys (unique values in other tables).
 
 Pewlett Hackard Employee Database
 
 ![Employee Database](https://github.com/AnnaS0272/Pewlett-Hackard-Analysis/blob/master/EmployeeDB.png)
 
-Then I added the data to a Postgres database, created multiple tables by connecting primary key and foreign keys to access relevant information from various tables. In order to do the latter, I used 'Inner Join' method and performed specific data requests such as determining current employees retiring soon. For example, using the below code we first determed list of current employees born between Jan. 1, 1952 and Dec. 31, 1955. I joined three tables, the first one -- employees tables, that provided unique employee number ('emp_no'), first name and last name, then I took 'title' and 'from date' from titles table by using the unique (foreign) key 'emp_no', and finally 'salary' from salaries table also using the unique (foreign) key 'emp_no'.
+Then I added the data to a PostgresSQL database, created multiple tables by connecting primary key and foreign keys to access relevant information from various tables. In order to do the latter, I used 'Inner Join' method and performed specific data requests such as determining current employees retiring soon. For example, using the below code I first determed list of current employees born between Jan. 1, 1952 and Dec. 31, 1955. I joined three tables, the first one -- employees tables, that provided unique employee number ('emp_no'), first name and last name, then I took 'title' and 'from date' from titles table by using the unique (foreign) key 'emp_no', and finally 'salary' from salaries table also using the unique (foreign) key 'emp_no'.
 
 ```
 -- Challenge Part 1: List of retiring employees grouped by title
