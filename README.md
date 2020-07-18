@@ -9,7 +9,7 @@ Pewlett Hackard Employee Database
 
 ![Employee Database](https://github.com/AnnaS0272/Pewlett-Hackard-Analysis/blob/master/EmployeeDB.png)
 
-Then I added the data to a PostgresSQL database, created multiple tables by connecting primary key and foreign keys to access relevant information from various tables. In order to do the latter, I used 'Inner Join' method and performed specific data requests such as determining current employees retiring soon. For example, using the below code I first determed list of current employees born between Jan. 1, 1952 and Dec. 31, 1955. I joined three tables, the first one -- employees tables, that provided unique employee number ('emp_no'), first name and last name, then I took 'title' and 'from date' from titles table by using the unique (foreign) key 'emp_no', and finally 'salary' from salaries table also using the unique (foreign) key 'emp_no'.
+Then I added the data to a PostgresSQL database, created multiple tables by connecting primary key and foreign keys to access relevant information from various tables. In order to do the latter, I used 'Inner Join' method and performed specific data requests such as determining current employees retiring soon. For example, using the below code I first determed list of current employees born between Jan. 1, 1952 and Dec. 31, 1955. I joined three tables, the first one -- **employees table**, that provided unique employee number ('emp_no'), first name and last name, then I took 'title' and 'from date' from **titles table** by using the unique (foreign) key 'emp_no', and finally 'salary' from **salaries table** also using the unique (foreign) key 'emp_no'.
 
 ```
 -- Challenge Part 1: List of retiring employees grouped by title
