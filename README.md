@@ -110,7 +110,7 @@ ORDER BY title ASC;
 I then determined employees who are eligible to participate in a mentorship program. To be eligible to participate in the mentorship program, employees will need to have a date of birth that falls between January 1, 1965 and December 31, 1965.
 
 ```
---Challenge Part 2: Mentorship Eligibility with dulicates
+--Challenge Part 2: Mentorship Eligibility with duplicates
 SELECT e.emp_no,
 	e.first_name,
 	e.last_name,
@@ -158,5 +158,7 @@ FROM
 emp_mentors_clean
 ```
 
+---
 
-In your final paragraph, share the results of your analysis and discuss the data that you’ve generated. Have you identified any limitations to the analysis? What next steps would you recommend?
+From the data generated throughout the analysis, there are some things that require clarification before any human succession strategy plan takes place. For example, in the summary table by title, only 2 managers were identified, suggesting that either big chunk of data is missing or there are some inconsistencies at the data entry point. Therefore, it would be avisable to revisit the original csv files, where the data was pulled fom, who pulled the data and when. At the moent, the largest category retiring is senior engineer, which means that a technical mentoring program needs to be put in place. Scrolling through the results of cleaned up mentorshi eligibility, I can see a lot of Senior Engineer titles, therefore suggeting the company has enough internal capabilities to set up the program but it has to be done promptly. My next steps would be to further test how a one-on-one mentor- mentee program can be created, i.e., how many young engineers (or other titles as identified) are in the company and how many senior engineers, or perhaps assign severla mentees to one mentor. 
+
