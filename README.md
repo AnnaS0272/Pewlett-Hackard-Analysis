@@ -54,48 +54,58 @@ ORDER BY emp_no;
 As I got my tables back I wanted to sense check if the total number of line items reduced or not, i.e., were the duplicates filtered out or not. for that, I have used the below code which evidently confirmed my total line items were reduced from 65,427 to 41,380:
 
 ```
---Challenge Part 1: Check if new table still has duplicates
-SELECT
-	emp_no,
-  first_name,
-  last_name,
-  count(*)
-FROM emp_title_recent
-GROUP BY
-	emp_no,
-  first_name,
-  last_name
-HAVING count(*) > 1;
-
 --Challenge Part 1: Count the original number of rows in emp_title(recorded result:65427)
 SELECT
-	count(*)
+count(*)
 FROM
-	emp_title
+emp_title
 
 --Challenge Part 1: Count the original number of rows in emp_title_recent(recorded result:41380)
 SELECT
-	count(*)
+count(*)
 FROM
-	emp_title_recent
+emp_title_recent
   ```
+I also used this approach to doublec chech there were no duplicates left, and as I ran this quiery the tbale returned was empty, which signified the duplicated were removed.
+
+```
+--Challenge Part 1: Check if new table still has duplicates
+SELECT
+emp_no,
+first_name,
+last_name,
+count(*)
+
+FROM emp_title_recent
+
+GROUP BY
+emp_no,
+first_name,
+last_name
+HAVING count(*) > 1;
+```
+
 Next I looked at how many people are retiring within each title to get a more summarized view on data.
 
 ```
 -- Create summary table showing number of titles retiring
 SELECT 
-COUNT (DISTINCT title) as "Number of Titles Pending Retirees"
---INTO count_unique_titles_ret
+COUNT (DISTINCT title) as "Number of Titles Retirees"
+INTO count_emp_title_unique
 FROM emp_title_recent;
--- Create one table showing number of employees with each title
+
+-- Create one table showing number of employees with each title or how many
 SELECT
-	title as "Title",
-    COUNT (title) as "Number of Pending Retirees"
---INTO count_ret_by_title
+title as "Title",
+COUNT (title) as "Number of Pending Retirees"
+INTO count_emp_title_unique_summary
 FROM emp_title_recent
 GROUP BY title
 ORDER BY title ASC;
+
 ```
+
+**NOTE: I was confused what the Challenge was asking for at the end, under submission remarks, when I read : "One showing number of [titles] retiring." From the above code I could clearly see there were just 7 titles, I wasn't sure why we needed a separate csv file for 1 row that says "7" but i still egnerated is as "count_emp_title_unique. My other classmates found it confusing too."**
 
 We then determined the total number of employees per title who will be retiring, and identify employees who are eligible to participate in a mentorship program. 
 
