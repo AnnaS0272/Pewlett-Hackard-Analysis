@@ -1,4 +1,4 @@
-# Pewlett Hackard Analysis
+## Pewlett Hackard Analysis
 ---
 
 At Pewlett Hackard like in most companies human capital matters for the ongoing company's success. The problem identified was to understand the amount of employees retiring in the next little while, specifically in which departments, what their titles were and how many were senior levels managers/employees. The latter particularly important to address mentoring program strategy. 
@@ -29,7 +29,7 @@ WHERE (e.birth_date BETWEEN '1952-01-01' AND '1955-12-31')
 AND (e.hire_date BETWEEN '1985-01-01' AND '1988-12-31')
 GROUP BY ti.title, e.emp_no, ti.from_date, s.salary;
 ```
-While this quiery returened the table I needed, upon quick examination it was clear there were duplicates as throughout their careers people had more than one title. I then used partitioning method to filter out the duplicates.
+While this quiery returned the table I needed, upon quick examination it was clear there were duplicates as throughout their careers people had more than one title. I then used partitioning method to filter out the duplicates.
 
 ```
 -- Challenge Part 1: Partition the data to show only most recent title per employee
@@ -66,7 +66,7 @@ count(*)
 FROM
 emp_title_recent
   ```
-I also used this approach to doublec chech there were no duplicates left, and as I ran this quiery the tbale returned was empty, which signified the duplicated were removed.
+I also used this approach to double check there were no duplicates left, and as I ran this quiery the tbale returned was empty, which signified the duplicated were removed.
 
 ```
 --Challenge Part 1: Check if new table still has duplicates
