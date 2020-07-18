@@ -9,7 +9,7 @@ Pewlett Hackard Employee Database
 
 ![Employee Database](https://github.com/AnnaS0272/Pewlett-Hackard-Analysis/blob/master/EmployeeDB.png)
 
-Then I added the data to a Postgres database, created multiple tables by connecting primary key and foreign keys to access relevant information from various tables. In order to do the latter that, I used 'Inner Join' method and performed specific data requests such as determining current employees retiring soon. For example, using the below code we first determed list of current employees born between Jan. 1, 1952 and Dec. 31, 1955. I joined three tables, the first one -- employees tables, that provided unique employee number ('emp_no'), first name and last name, then I took 'title' and 'from date' from titles table by using the unique (foreign) key 'emp_no', and finally 'salary' from salaries table also using the unique (foreign) key 'emp_no'.
+Then I added the data to a Postgres database, created multiple tables by connecting primary key and foreign keys to access relevant information from various tables. In order to do the latter, I used 'Inner Join' method and performed specific data requests such as determining current employees retiring soon. For example, using the below code we first determed list of current employees born between Jan. 1, 1952 and Dec. 31, 1955. I joined three tables, the first one -- employees tables, that provided unique employee number ('emp_no'), first name and last name, then I took 'title' and 'from date' from titles table by using the unique (foreign) key 'emp_no', and finally 'salary' from salaries table also using the unique (foreign) key 'emp_no'.
 
 ```
 -- Challenge Part 1: List of retiring employees grouped by title
@@ -29,7 +29,7 @@ WHERE (e.birth_date BETWEEN '1952-01-01' AND '1955-12-31')
 AND (e.hire_date BETWEEN '1985-01-01' AND '1988-12-31')
 GROUP BY ti.title, e.emp_no, ti.from_date, s.salary;
 ```
-While this quiery returened us the table I needed, upon quick examination it was clear there were duplicates as throughout their career people had more than one title. I then used partitioning method to filter out the duplicates.
+While this quiery returened the table I needed, upon quick examination it was clear there were duplicates as throughout their careers people had more than one title. I then used partitioning method to filter out the duplicates.
 
 ```
 -- Challenge Part 1: Partition the data to show only most recent title per employee
