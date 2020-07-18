@@ -1,5 +1,5 @@
 ## Pewlett Hackard Analysis
----
+
 
 At Pewlett Hackard like in most companies human capital matters for the ongoing company's success. The problem identified was to understand the amount of employees retiring in the next little while, specifically in which departments, what their titles were and how many were senior levels managers/employees. The latter particularly important to address mentoring program strategy. 
 
@@ -107,9 +107,56 @@ ORDER BY title ASC;
 
 **NOTE: I was confused what the Challenge was asking for at the end, under submission remarks, when I read : "One showing number of [titles] retiring." From the above code I could clearly see there were just 7 titles, I wasn't sure why we needed a separate csv file for 1 row that says "7" but i still egnerated is as "count_emp_title_unique. My other classmates found it confusing too."**
 
-We then determined the total number of employees per title who will be retiring, and identify employees who are eligible to participate in a mentorship program. 
+I then determined employees who are eligible to participate in a mentorship program. To be eligible to participate in the mentorship program, employees will need to have a date of birth that falls between January 1, 1965 and December 31, 1965.
 
+```
+--Challenge Part 2: Mentorship Eligibility with dulicates
+SELECT e.emp_no,
+	e.first_name,
+	e.last_name,
+	ti.title,
+	ti.from_date,
+	ti.to_date
+INTO emp_mentors
+FROM employees as e
+INNER JOIN titles as ti
+ON (e.emp_no = ti.emp_no)
+INNER JOIN dept_emp as de
+ON (e.emp_no = de.emp_no)
+WHERE (e.birth_date BETWEEN '1965-01-01' AND '1965-12-31')
+--AND ti.to_date = ('9999-01-01')
+ORDER BY e.emp_no;
+```
+Again, I encountered duplicates and I addressed them by using the following code:
 
-In your second paragraph, summarize the steps that you took to solve the problem, as well as the challenges that you encountered along the way. This is an excellent spot to provide examples and descriptions of the code that you used.
+```
+--Challenge Part 2: Count before removing duplicates(3125)
+SELECT
+count(*)
+FROM
+emp_mentors
+	
+--Challenge Part 2: Mentorship Eligibility - without duplicates
+SELECT e.emp_no,
+	e.first_name,
+	e.last_name,
+	ti.title,
+	ti.from_date,
+	ti.to_date
+INTO emp_mentors_clean
+FROM employees as e
+INNER JOIN titles as ti
+ON (e.emp_no = ti.emp_no)
+WHERE (e.birth_date BETWEEN '1965-01-01' AND '1965-12-31')
+AND ti.to_date = ('9999-01-01')
+ORDER BY e.emp_no;
+
+--Challenge Part 2: Count after duplicates(1549)
+SELECT
+count(*)
+FROM
+emp_mentors_clean
+```
+
 
 In your final paragraph, share the results of your analysis and discuss the data that you’ve generated. Have you identified any limitations to the analysis? What next steps would you recommend?
